@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter } from "lucide-react";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 
@@ -55,12 +55,12 @@ export const ContactOrbiting = ({ delay = 0 }: ContactOrbitingProps) => {
             Get in Touch.
           </h2>
           <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Want to chat? Feel free to reach out via{" "}
+            Want to chat? Just shoot me a dm via{" "}
             <Link
-              href={DATA.contact.social.email.url}
+              href={DATA.contact.social.Twitter.url}
               className="text-blue-500 hover:underline"
             >
-              email
+              Twitter
             </Link>{" "}
             or{" "}
             <Link
@@ -68,6 +68,13 @@ export const ContactOrbiting = ({ delay = 0 }: ContactOrbitingProps) => {
               className="text-blue-500 hover:underline"
             >
               LinkedIn
+            </Link>{" "}
+            or{" "}
+            <Link
+              href={DATA.contact.social.email.url}
+              className="text-blue-500 hover:underline"
+            >
+              email
             </Link>{" "}
             and I&apos;ll respond whenever I can.
           </p>
@@ -80,15 +87,16 @@ export const ContactOrbiting = ({ delay = 0 }: ContactOrbitingProps) => {
         >
           {/* Inner orbit - Email icons */}
           <OrbitingCircles radius={80} duration={15}>
-            <Mail className="size-8 text-blue-600" />
-            <Mail className="size-8 text-blue-600" />
-            <Mail className="size-8 text-blue-600" />
+            <Twitter className="size-8 text-blue-600" />
+            <Twitter className="size-8 text-blue-600" />
+            <Twitter className="size-8 text-blue-600" />
           </OrbitingCircles>
-          
+
           {/* Outer orbit - Social icons */}
           <OrbitingCircles radius={140} reverse duration={20}>
-            <Linkedin className="size-8 text-blue-700" />
+            <Mail className="size-8 text-gray-700 dark:text-gray-300" />
             <Github className="size-8 text-gray-700 dark:text-gray-300" />
+            <Linkedin className="size-8 text-blue-700" />
           </OrbitingCircles>
 
           {/* Center content - clickable links */}
@@ -102,13 +110,13 @@ export const ContactOrbiting = ({ delay = 0 }: ContactOrbitingProps) => {
                 <Mail className="size-6 text-foreground" />
               </Link>
               <Link
-                href={DATA.contact.social.LinkedIn.url}
+                href={DATA.contact.social.Twitter.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full bg-background border shadow-lg hover:scale-110 transition-transform duration-200"
-                title="Connect on LinkedIn"
+                title="Connect on Twitter"
               >
-                <Linkedin className="size-6 text-foreground" />
+                <Twitter className="size-6 text-foreground" />
               </Link>
               <Link
                 href={DATA.contact.social.GitHub.url}
@@ -125,4 +133,4 @@ export const ContactOrbiting = ({ delay = 0 }: ContactOrbitingProps) => {
       </div>
     </motion.section>
   );
-}; 
+};

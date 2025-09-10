@@ -2,45 +2,54 @@
 
 import { useState, useEffect, useMemo } from "react";
 import BlurFade from "./magicui/blur-fade";
-import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  ZoomableGroup,
+} from "react-simple-maps";
 import geoData from "../../public/world-countries.json";
 
 // List of countries you've visited (ISO 3166-1 alpha-3 codes)
 const visitedCountries = [
-  "USA", // United States
+  "CAN", // Canada
   "CHN", // China
   "TWN", // Taiwan
   "JPN", // Japan
   "KOR", // South Korea
-  "MYS", // Malaysia
+  // "MYS", // Malaysia
   "THA", // Thailand
-  "FRA", // France
-  "ESP", // Spain
-  "CHE", // Switzerland
-  "ITA", // Italy
-  "QAT", // Qatar
+  "BTN", // Bhutan
+  "AUS", // Australia
+  // "FRA", // France
+  // "ESP", // Spain
+  // "CHE", // Switzerland
+  // "ITA", // Italy
+  // "QAT", // Qatar
   "GBR", // United Kingdom
-  "FIN", // Finland
-  "VAT", // Vatican City
+  // "FIN", // Finland
+  // "VAT", // Vatican City
 ];
 
 // Map of country codes to full names and categories for the word list
 const countryData: { [key: string]: { name: string; category: string } } = {
-  "USA": { name: "United States", category: "North America" },
-  "CHN": { name: "China", category: "Asia" },
-  "TWN": { name: "Taiwan", category: "Asia" },
-  "JPN": { name: "Japan", category: "Asia" },
-  "KOR": { name: "South Korea", category: "Asia" },
-  "MYS": { name: "Malaysia", category: "Asia" },
-  "THA": { name: "Thailand", category: "Asia" },
-  "FRA": { name: "France", category: "Europe" },
-  "ESP": { name: "Spain", category: "Europe" },
-  "CHE": { name: "Switzerland", category: "Europe" },
-  "ITA": { name: "Italy", category: "Europe" },
-  "QAT": { name: "Qatar", category: "Middle East" },
-  "GBR": { name: "United Kingdom", category: "Europe" },
-  "FIN": { name: "Finland", category: "Europe" },
-  "VAT": { name: "Vatican City", category: "Europe" },
+  CAN: { name: "Canada", category: "North America" },
+  CHN: { name: "China", category: "Asia" },
+  TWN: { name: "Taiwan", category: "Asia" },
+  JPN: { name: "Japan", category: "Asia" },
+  KOR: { name: "South Korea", category: "Asia" },
+  // "MYS": { name: "Malaysia", category: "Asia" },
+  THA: { name: "Thailand", category: "Asia" },
+  BTN: { name: "Bhutan", category: "Asia" },
+  AUS: { name: "Australia", category: "Oceania" },
+  // "FRA": { name: "France", category: "Europe" },
+  // "ESP": { name: "Spain", category: "Europe" },
+  // "CHE": { name: "Switzerland", category: "Europe" },
+  // "ITA": { name: "Italy", category: "Europe" },
+  // "QAT": { name: "Qatar", category: "Middle East" },
+  GBR: { name: "United Kingdom", category: "Europe" },
+  // "FIN": { name: "Finland", category: "Europe" },
+  // VAT: { name: "Vatican City", category: "Europe" },
 };
 
 interface WorldMapProps {
@@ -102,7 +111,9 @@ export const WorldMap = ({ delay }: WorldMapProps) => {
                 <ZoomableGroup
                   zoom={position.zoom}
                   center={position.coordinates as [number, number]}
-                  onMoveEnd={({ coordinates, zoom }) => setPosition({ coordinates, zoom })}
+                  onMoveEnd={({ coordinates, zoom }) =>
+                    setPosition({ coordinates, zoom })
+                  }
                 >
                   <Geographies geography={geoData}>
                     {({ geographies }) =>
@@ -113,7 +124,9 @@ export const WorldMap = ({ delay }: WorldMapProps) => {
                           <Geography
                             key={geo.rsmKey}
                             geography={geo}
-                            onMouseEnter={() => setHoveredCountry(getCountryName(geo))}
+                            onMouseEnter={() =>
+                              setHoveredCountry(getCountryName(geo))
+                            }
                             onMouseLeave={() => setHoveredCountry(null)}
                             style={{
                               default: {
@@ -149,14 +162,19 @@ export const WorldMap = ({ delay }: WorldMapProps) => {
               {/* Tooltip for hovered country */}
               {hoveredCountry && (
                 <div className="absolute left-1/2 top-2 transform -translate-x-1/2 bg-white bg-opacity-90 text-blue-700 px-4 py-2 rounded-lg shadow text-center pointer-events-none z-10">
-                  <span className="font-semibold text-base">{hoveredCountry}</span>
+                  <span className="font-semibold text-base">
+                    {hoveredCountry}
+                  </span>
                 </div>
               )}
             </div>
             {/* Legend */}
             <div className="flex items-center space-x-6 text-sm">
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 rounded" style={{ backgroundColor: '#5AC8FA' }}></div>
+                <div
+                  className="w-4 h-4 rounded"
+                  style={{ backgroundColor: "#5AC8FA" }}
+                ></div>
                 <span>Visited</span>
               </div>
               <div className="flex items-center space-x-2">
@@ -164,34 +182,46 @@ export const WorldMap = ({ delay }: WorldMapProps) => {
                 <span>Not Yet Visited</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 rounded" style={{ backgroundColor: '#007AFF' }}></div>
+                <div
+                  className="w-4 h-4 rounded"
+                  style={{ backgroundColor: "#007AFF" }}
+                ></div>
                 <span>Hover</span>
               </div>
             </div>
-            
+
             {/* Visited Countries Word List */}
             <div className="w-full max-w-2xl">
-              <h3 className="text-lg font-semibold text-center mb-4">Countries Visited</h3>
+              <h3 className="text-lg font-semibold text-center mb-4">
+                Countries Visited
+              </h3>
               <div className="text-center space-y-3">
                 {(() => {
                   // Group countries by category
                   const categories: { [key: string]: string[] } = {};
-                  visitedCountries.forEach(countryCode => {
-                    const category = countryData[countryCode]?.category || "Other";
+                  visitedCountries.forEach((countryCode) => {
+                    const category =
+                      countryData[countryCode]?.category || "Other";
                     if (!categories[category]) {
                       categories[category] = [];
                     }
-                    categories[category].push(countryData[countryCode]?.name || countryCode);
+                    categories[category].push(
+                      countryData[countryCode]?.name || countryCode
+                    );
                   });
-                  
-                  return Object.entries(categories).map(([category, countries]) => (
-                    <div key={category} className="space-y-1">
-                      <div className="text-sm font-medium text-muted-foreground">{category}</div>
-                      <div className="text-sm text-foreground">
-                        {countries.join(", ")}
+
+                  return Object.entries(categories).map(
+                    ([category, countries]) => (
+                      <div key={category} className="space-y-1">
+                        <div className="text-sm font-medium text-muted-foreground">
+                          {category}
+                        </div>
+                        <div className="text-sm text-foreground">
+                          {countries.join(", ")}
+                        </div>
                       </div>
-                    </div>
-                  ));
+                    )
+                  );
                 })()}
               </div>
             </div>
@@ -200,4 +230,4 @@ export const WorldMap = ({ delay }: WorldMapProps) => {
       </div>
     </BlurFade>
   );
-}; 
+};

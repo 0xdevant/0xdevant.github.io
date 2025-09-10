@@ -8,10 +8,11 @@ import { ChevronRight, ChevronDown } from "lucide-react";
 // Define the sections of your page
 const SECTIONS = [
   { id: "hero", label: "Home" },
-  { id: "rubiks-cube", label: "Rubik's Cube" },
-  { id: "about", label: "About" },
+  // { id: "rubiks-cube", label: "Rubik's Cube" },
+  { id: "about", label: "My Story" },
   { id: "work", label: "Work" },
   { id: "education", label: "Education" },
+  // { id: "tech-stack", label: "Tech Stack" },
   { id: "projects", label: "Projects" },
   { id: "books", label: "Books" },
   { id: "hong-kong", label: "Hong Kong" },
@@ -29,7 +30,7 @@ export function TableOfContents() {
   const handleNextSection = () => {
     if (hasViewedAllSections) {
       // Redirect to GitHub
-      window.open('https://github.com/heilcheng', '_blank');
+      window.open("https://github.com/heilcheng", "_blank");
       return;
     }
 
@@ -38,7 +39,7 @@ export function TableOfContents() {
       setCurrentSectionIndex(nextIndex);
       const nextSection = document.getElementById(SECTIONS[nextIndex].id);
       if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth' });
+        nextSection.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       // All sections viewed, next click will go to GitHub
@@ -54,7 +55,9 @@ export function TableOfContents() {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
             // Update current section index
-            const sectionIndex = SECTIONS.findIndex(s => s.id === entry.target.id);
+            const sectionIndex = SECTIONS.findIndex(
+              (s) => s.id === entry.target.id
+            );
             if (sectionIndex !== -1) {
               setCurrentSectionIndex(sectionIndex);
               setHasViewedAllSections(false);
@@ -193,8 +196,6 @@ export function TableOfContents() {
           </motion.div>
         </motion.button>
       </div>
-
-
     </>
   );
-} 
+}

@@ -26,78 +26,167 @@ interface TechCategory {
 
 const techCategories: TechCategory[] = [
   {
-    category: "Core Scientific & Computational Tools",
+    category: "Blockchain Development",
     subcategories: [
       {
-        name: "Languages & Environments",
+        name: "Languages",
         items: [
-          { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-          { name: "MATLAB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" },
-          { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-          { name: "R", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" },
-          { name: "LaTeX", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/latex/latex-original.svg" },
-        ]
+          {
+            name: "Solidity",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg",
+          },
+          {
+            name: "Rust",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg",
+          },
+        ],
       },
       {
-        name: "ML & AI Frameworks",
+        name: "EVM Development Toolkit",
         items: [
-          { name: "PyTorch", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
-          { name: "TensorFlow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
-          { name: "Scikit-learn", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
-          { name: "Transformers", logo: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg" },
-          { name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
-          { name: "Pandas", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
-        ]
-      }
-    ]
+          {
+            name: "Foundry",
+            logo: "https://getfoundry.sh/foundry-logo.png",
+          },
+          {
+            name: "Hardhat",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hardhat/hardhat-original.svg",
+          },
+          {
+            name: "Tenderly",
+            logo: "https://dashboard.tenderly.co/static/media/logo-symbol.svg",
+          },
+          {
+            name: "Certora",
+            logo: "https://www.certora.com/favicon.ico",
+          },
+          {
+            name: "Forta",
+            logo: "https://chainstack.com/wp-content/uploads/2022/12/forta_black-1.png",
+          },
+          {
+            name: "Viem",
+            logo: "https://viem.sh/icon-light.png",
+          },
+        ],
+      },
+    ],
   },
   {
     category: "Web Development",
     subcategories: [
       {
-        name: "Languages & Frontend",
+        name: "Frontend",
         items: [
-          { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-          { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-        ]
+          {
+            name: "TypeScript",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+          },
+          {
+            name: "JavaScript",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+          },
+          {
+            name: "jQuery",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg",
+          },
+          {
+            name: "HTML",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+          },
+          {
+            name: "CSS",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+          },
+        ],
       },
       {
         name: "Frameworks & Libraries",
         items: [
-          { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-          { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-line.svg" },
-          { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
-          { name: "Three.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
-          { name: "shadcn/ui", logo: "https://ui.shadcn.com/favicon.ico" },
-          { name: "Framer Motion", logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
-        ]
-      }
-    ]
+          {
+            name: "React",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          },
+          {
+            name: "Next.js",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+          },
+          {
+            name: "Tailwind CSS",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+          },
+          {
+            name: "Three.js",
+            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg",
+          },
+          {
+            name: "shadcn/ui",
+            logo: "https://avatars.githubusercontent.com/u/139895814?s=48&v=4",
+          },
+          {
+            name: "Framer Motion",
+            logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg",
+          },
+        ],
+      },
+    ],
   },
   {
     category: "Backend & DevOps",
     items: [
-      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg" },
-      { name: "Flask", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
-      { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-      { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-      { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-    ]
-  }
+      {
+        name: "Node.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      },
+      {
+        name: "PHP",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+      },
+      {
+        name: "MySQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      },
+      {
+        name: "PostgreSQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        name: "MongoDB",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      },
+      {
+        name: "Docker",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+    ],
+  },
 ];
 
 // Flatten all items for the scrolling marquee
-const allTechItems: TechItem[] = techCategories.flatMap(category => 
-  category.subcategories 
-    ? category.subcategories.flatMap(sub => sub.items)
+const allTechItems: TechItem[] = techCategories.flatMap((category) =>
+  category.subcategories
+    ? category.subcategories.flatMap((sub) => sub.items)
     : category.items || []
 );
 
-const TechItem = ({ tech, showName = false }: { tech: TechItem; showName?: boolean }) => {
+const TechItem = ({
+  tech,
+  showName = false,
+}: {
+  tech: TechItem;
+  showName?: boolean;
+}) => {
   return (
-    <div className={`flex ${showName ? 'flex-col' : ''} items-center justify-center ${showName ? 'p-4' : 'mx-6'} group`}>
-      <div className={`relative ${showName ? 'w-16 h-16' : 'w-12 h-12'} transition-all duration-300 group-hover:scale-110 opacity-70 hover:opacity-100`}>
+    <div
+      className={`flex ${
+        showName ? "flex-col" : ""
+      } items-center justify-center ${showName ? "p-4" : "mx-6"} group`}
+    >
+      <div
+        className={`relative ${
+          showName ? "w-16 h-16" : "w-12 h-12"
+        } transition-all duration-300 group-hover:scale-110 opacity-70 hover:opacity-100`}
+      >
         <Image
           src={tech.logo}
           alt={`${tech.name} logo`}
@@ -146,7 +235,7 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-            Tech Stack.
+            Tech Stack
           </h2>
           <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Technologies and tools I work with to build innovative solutions.
@@ -161,7 +250,7 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
             {/* Subtle gradient overlays */}
             <div className="absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-background via-background/80 to-transparent" />
             <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-background via-background/80 to-transparent" />
-            
+
             {/* Floating logos */}
             <motion.div
               className="flex items-center"
@@ -182,7 +271,7 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
               ))}
             </motion.div>
           </div>
-          
+
           {/* Icon-only Show All Button */}
           <div className="flex justify-center">
             <Button
@@ -211,7 +300,7 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
                 <h3 className="text-2xl font-bold text-center text-foreground">
                   {category.category}
                 </h3>
-                
+
                 {category.subcategories ? (
                   <div className="space-y-8">
                     {category.subcategories.map((subcategory, subIndex) => (
@@ -225,7 +314,12 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
                               key={tech.name}
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: (categoryIndex * 0.1) + (subIndex * 0.05) + (techIndex * 0.03) }}
+                              transition={{
+                                delay:
+                                  categoryIndex * 0.1 +
+                                  subIndex * 0.05 +
+                                  techIndex * 0.03,
+                              }}
                             >
                               <TechItem tech={tech} showName={true} />
                             </motion.div>
@@ -241,7 +335,9 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
                         key={tech.name}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: (categoryIndex * 0.1) + (techIndex * 0.03) }}
+                        transition={{
+                          delay: categoryIndex * 0.1 + techIndex * 0.03,
+                        }}
                       >
                         <TechItem tech={tech} showName={true} />
                       </motion.div>
@@ -251,7 +347,7 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
               </motion.div>
             ))}
           </div>
-          
+
           {/* Icon-only Back Button */}
           <div className="flex justify-center">
             <Button
@@ -268,4 +364,4 @@ export const TechStack = ({ delay = 0 }: TechStackProps) => {
       )}
     </motion.div>
   );
-}; 
+};
