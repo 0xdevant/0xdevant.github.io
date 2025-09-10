@@ -89,7 +89,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Developer Support Associate",
-      logoUrl: "/logo_uf.svg",
+      logoUrl: "/logo_uf.png",
       start: "Oct 2024",
       end: "Feb 2025",
       bullets: [
