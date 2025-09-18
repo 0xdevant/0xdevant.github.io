@@ -191,17 +191,17 @@ export const DATA = {
       video: "",
     },
     {
-      title: "ERC5643",
-      href: "https://github.com/0xdevant/ERC5643",
+      title: "ERC8027",
+      href: "https://github.com/0xdevant/ERC8027",
       dates: "2025 Sep - Present",
       active: true,
       description:
-        "A ERC standard implementation for Recurring Subscription NFTs.",
-      technologies: ["Solidity", "Foundry", "Permit2", "EIP", "NFT"],
+        "A ERC standard implementation for NFTs - specifically ERC721 tokens to enable manual and recurring subscription service with auto expiration i.e. Subscription NFTs (SubNFTs).",
+      technologies: ["Solidity", "Permit2", "EIP", "ERC", "NFT"],
       links: [
         {
           type: "Source",
-          href: "https://github.com/0xdevant/ERC5643",
+          href: "https://github.com/0xdevant/ERC8027",
           icon: <Icons.github className="size-3" />,
         },
       ],
