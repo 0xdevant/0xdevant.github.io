@@ -91,7 +91,7 @@ export const DATA = {
       title: "Developer Support Associate",
       logoUrl: "/logo_uf.png",
       start: "Oct 2024",
-      end: "Feb 2025",
+      end: "Mar 2025",
       bullets: [
         "Onboard developers into the Uniswap ecosystem, providing them technical assistance related to Uniswap v4, Unichain, Uniswap SDK, Uniswap frontend etc",
         "Core contributor to Uniswap v4 docs",
