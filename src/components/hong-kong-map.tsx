@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 import Image from "next/image";
 import BlurFade from "./magicui/blur-fade";
@@ -10,53 +9,51 @@ interface HongKongMapProps {
   delay?: number;
 }
 
-// Location data remains the same
 const locations = {
   "Tai Tam Reservoir": {
     name: "Tai Tam Reservoir (大潭水塘)",
     description: "Hiking with beautiful mountain views",
-    coordinates: [22.26, 114.21],
+    coordinates: [22.26, 114.21] as [number, number],
     type: "nature",
   },
   "Tai On Building": {
     name: "Tai On Building (太安樓)",
     description: "Night market for local food",
-    coordinates: [22.2828, 114.2219],
+    coordinates: [22.2828, 114.2219] as [number, number],
     type: "urban",
   },
   "West Kowloon": {
     name: "West Kowloon (西九龍)",
     description: "Picnicking by the harbor",
-    coordinates: [22.3045, 114.1588],
+    coordinates: [22.3045, 114.1588] as [number, number],
     type: "urban",
   },
   "Shau Kei Wan": {
     name: "Shau Kei Wan (筲箕灣)",
     description: "Start of city walk",
-    coordinates: [22.2779, 114.2301],
+    coordinates: [22.2779, 114.2301] as [number, number],
     type: "urban",
   },
   "Quarry Bay": {
     name: "Quarry Bay (鰂魚涌)",
     description: "End of city walk",
-    coordinates: [22.2878, 114.2096],
+    coordinates: [22.2878, 114.2096] as [number, number],
     type: "urban",
   },
   SoHo: {
     name: "SoHo",
     description: "Bar Leone - Asia's Best Bar 2024",
-    coordinates: [22.2819, 114.1511],
+    coordinates: [22.2819, 114.1511] as [number, number],
     type: "urban",
   },
   "Sai Kung": {
     name: "Sai Kung (西貢)",
     description: "Strolling",
-    coordinates: [22.3833, 114.271],
+    coordinates: [22.3833, 114.271] as [number, number],
     type: "nature",
   },
 };
 
-// Custom icon definitions
 const natureIcon = new L.Icon({
   iconUrl:
     "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
@@ -81,24 +78,57 @@ const urbanIcon = new L.Icon({
 
 export const HongKongMap = ({ delay = 0 }: HongKongMapProps) => {
   const [isClient, setIsClient] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Fix for Leaflet marker icons in Next.js
   useEffect(() => {
-    if (isClient) {
-      delete (L.Icon.Default.prototype as any)._getIconUrl;
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl:
-          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-        iconUrl:
-          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-        shadowUrl:
-          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-      });
+    if (!isClient || !containerRef.current) return;
+
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+      iconUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+      shadowUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+    });
+
+    // Belt-and-suspenders: clear stale Leaflet state if the DOM node was reused
+    if ((containerRef.current as any)._leaflet_id) {
+      delete (containerRef.current as any)._leaflet_id;
     }
+
+    const map = L.map(containerRef.current, {
+      center: [22.35, 114.15],
+      zoom: 10,
+      scrollWheelZoom: false,
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    Object.entries(locations).forEach(([, location]) => {
+      const icon = location.type === "nature" ? natureIcon : urbanIcon;
+      L.marker(location.coordinates, { icon })
+        .addTo(map)
+        .bindPopup(
+          `<span style="font-weight:600">${location.name}</span><br/>${location.description}`
+        );
+    });
+
+    mapRef.current = map;
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
   }, [isClient]);
 
   if (!isClient) {
@@ -121,31 +151,10 @@ export const HongKongMap = ({ delay = 0 }: HongKongMapProps) => {
         <div className="bg-card border rounded-lg p-6 w-full max-w-4xl">
           <div className="flex flex-col items-center space-y-6">
             <div className="relative w-full h-96 max-w-4xl rounded-lg overflow-hidden border">
-              <MapContainer
-                key="hong-kong-map"
-                center={[22.35, 114.15]} // Center of Hong Kong
-                zoom={10}
+              <div
+                ref={containerRef}
                 style={{ height: "100%", width: "100%" }}
-                scrollWheelZoom={false}
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {Object.entries(locations).map(([key, location]) => (
-                  <Marker
-                    key={key}
-                    position={location.coordinates as [number, number]}
-                    icon={location.type === "nature" ? natureIcon : urbanIcon}
-                  >
-                    <Popup>
-                      <span className="font-semibold">{location.name}</span>
-                      <br />
-                      {location.description}
-                    </Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
+              />
             </div>
             <div className="flex items-center space-x-6 text-sm">
               <div className="flex items-center space-x-2">
@@ -176,5 +185,4 @@ export const HongKongMap = ({ delay = 0 }: HongKongMapProps) => {
   );
 };
 
-// Make sure to export the component as default if it's the only export
 export default HongKongMap;

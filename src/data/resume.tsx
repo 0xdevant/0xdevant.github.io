@@ -168,9 +168,34 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Clawify",
+      href: "https://clawify.dev/",
+      dates: "2026 - Present",
+      active: true,
+      description:
+        "One-click OpenClaw AI agent deployment — no more headaches of Docker, servers, and complicated configs. Launch agents powered by GPT, Claude, or Gemini on your own infrastructure; connect to Telegram, Discord or Signal. Pay once, no subscriptions; you own your data and server.",
+      technologies: [
+        "OpenClaw",
+        "AI",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "TypeScript",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://clawify.dev/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
+    {
       title: "facts.hype",
       href: "https://github.com/0xdevant/facts.hype",
-      dates: "2025 Aug - Present",
+      dates: "2025 Aug - 2025 Oct",
       active: true,
       description:
         "A decentralized and actually fair market resolution system to provide crowd-sourced verification of real-world events for DApps to build on top of i.e. an open-source alternative to UMA on HyperLiquid.",
