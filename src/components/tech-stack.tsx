@@ -73,6 +73,35 @@ const techCategories: TechCategory[] = [
     ],
   },
   {
+    category: "AI / Agentic Engineering",
+    items: [
+      {
+        name: "OpenAI",
+        logo: "https://cdn.simpleicons.org/openai",
+      },
+      {
+        name: "Anthropic Claude",
+        logo: "https://cdn.simpleicons.org/anthropic",
+      },
+      {
+        name: "Google Gemini",
+        logo: "https://cdn.simpleicons.org/googlegemini",
+      },
+      {
+        name: "LangChain",
+        logo: "https://cdn.simpleicons.org/langchain",
+      },
+      {
+        name: "WhatsApp",
+        logo: "https://cdn.simpleicons.org/whatsapp",
+      },
+      {
+        name: "Telegram",
+        logo: "https://cdn.simpleicons.org/telegram",
+      },
+    ],
+  },
+  {
     category: "Web Development",
     subcategories: [
       {

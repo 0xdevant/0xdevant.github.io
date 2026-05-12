@@ -9,7 +9,7 @@ export const DATA = {
   location: "Hong Kong",
   locationLink: "https://www.google.com/maps/place/hongkong",
   description:
-    "Most of the time I'm a smart contract engineer that's obsessed with clean code and security - but sometimes I'm also a founder who loves designing permissionless and sustainable DeFi protocols. It goes without saying that having ownership over our data and asset is a basic human right. So if you ask me, what's better in life than embracing the ideology of Crypto and FOSS while making a living from your passion?",
+    "Most of the time I'm a smart contract & AI engineer that's obsessed with clean code and security - but sometimes I'm also a founder who loves designing permissionless and sustainable DeFi protocols, and shipping agentic AI infrastructure for SMEs at Clawify. It goes without saying that having ownership over our data, asset and AI agents is a basic human right. So if you ask me, what's better in life than embracing the ideology of Crypto, FOSS and self-hosted AI while making a living from your passion?",
   summary:
     "I'm a HongKonger born and raised in Hong Kong. I also spent a year studying in the UK and semesters in the US and France, experiences that opened my mind and shaped how I see the world.\n\nBefore university, I was that kid obsessed with biology and completely hooked on the Olympiad. I loved exploring the mysteries of life. But after countless hours pipetting in the lab, I started to feel burnt out. I realized I loved biology, just not the endless wet lab work.\n\nAt the same time, I discovered the beauty and speed of simulations, where you can explore complex systems without spilling a single drop. One day, I had a lightbulb moment: \"What if I could use math and code to solve big biology questions instead?\" That idea completely changed my path.\n\nAnd so, here I am, merging my love for biology with the power of math and computation.\n\nWhen I'm not coding or solving equations, you'll find me kayaking, playing tennis, or on a mission to hunt down the best ramen and handmade pasta in Hong Kong (I might have tried them all by now). And when it comes to boba, it's always \"No.1\" at Comebuytea.",
   avatarUrl: "/me.png",
@@ -51,6 +51,22 @@ export const DATA = {
   },
 
   technicalExperience: [
+    {
+      company: "Clawify",
+      href: "https://clawify.dev/",
+      badges: [],
+      location: "Hong Kong",
+      title: "Founder & AI Engineer",
+      logoUrl: "/logo-clawify.png",
+      start: "Mar 2026",
+      end: "Now",
+      bullets: [
+        "Founded an agentic AI infrastructure startup offering 1-click agent-to-VPS deployment with optimized runtime configs and custom workflow orchestration for SMEs - built on OpenClaw and Hermes",
+        "Design & build agentic SEO analysis workflow: scrapes competitor sites, scores keywords via LLM against prompt-engineered evaluation rules, delivers actionable reports through WhatsApp/Telegram; external APIs wrapped as agent-callable skills",
+        "Design & build tax audit RAG workflow with a WhatsApp interface via Hermes agent: users upload receipts → OCR → embedding & indexing → LLM classifies deductibility under Hong Kong IRD rules → generates compliant audit report, packaged as a reusable multi-step agent skill",
+        "Engineer the agent runtime: prompt engineering for evaluation rules, RAG pipeline (OCR + embeddings + vector retrieval), tool-calling integrations with messaging platforms, and skill abstractions to make workflows composable across clients",
+      ],
+    },
     {
       company: "Long",
       href: "https://long.xyz/",
@@ -173,13 +189,13 @@ export const DATA = {
       dates: "2026 - Present",
       active: true,
       description:
-        "One-click OpenClaw AI agent deployment — no more headaches of Docker, servers, and complicated configs. Launch agents powered by GPT, Claude, or Gemini on your own infrastructure; connect to Telegram, Discord or Signal. Pay once, no subscriptions; you own your data and server.",
+        "Agentic AI infrastructure startup for SMEs: 1-click agent-to-VPS deployment with optimized runtime configs and custom workflow orchestration on top of OpenClaw and Hermes. Launch agents powered by GPT, Claude, or Gemini on your own infra; connect to WhatsApp, Telegram, Discord or Signal. Pay once, no subscriptions; you own your data and server.",
       technologies: [
         "OpenClaw",
-        "AI",
-        "React",
+        "Hermes",
+        "LLM",
+        "Agentic AI",
         "Next.js",
-        "Tailwind CSS",
         "TypeScript",
       ],
       links: [
@@ -189,6 +205,46 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
+      image: "",
+      video: "",
+    },
+    {
+      title: "SEO Analyzer Agent",
+      href: "",
+      dates: "2026 - Present",
+      active: true,
+      description:
+        "Agentic SEO analysis workflow built on OpenClaw + Hermes: scrapes competitor sites, scores keywords via LLM against prompt-engineered evaluation rules, and delivers actionable reports through WhatsApp/Telegram. External APIs are wrapped as agent-callable skills so the workflow is composable across clients.",
+      technologies: [
+        "OpenClaw",
+        "Hermes",
+        "LLM",
+        "Prompt Engineering",
+        "Agentic AI",
+        "WhatsApp",
+        "Telegram",
+      ],
+      links: [],
+      image: "",
+      video: "",
+    },
+    {
+      title: "Tax Audit RAG",
+      href: "",
+      dates: "2026 - Present",
+      active: true,
+      description:
+        "Multi-step RAG workflow with a WhatsApp interface via a Hermes agent: users upload receipts → OCR → embed & index → LLM classifies deductibility under Hong Kong IRD rules → generates a compliant audit report. Packaged as a reusable agent skill so any Clawify-deployed agent can offer compliant tax audits out of the box.",
+      technologies: [
+        "RAG",
+        "OCR",
+        "Embeddings",
+        "Hermes",
+        "LLM",
+        "Agentic AI",
+        "WhatsApp",
+      ],
+      links: [],
       image: "",
       video: "",
     },
