@@ -14,6 +14,9 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+// The full `description` is a paragraph - share cards truncate it mid-sentence.
+const SHARE_DESCRIPTION = `${DATA.tagline} based in ${DATA.location}. Building DeFi protocols and agentic AI infrastructure.`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
@@ -21,13 +24,15 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
+  icons: { icon: "/icon.png" },
   openGraph: {
     title: `${DATA.name}`,
-    description: DATA.description,
+    description: SHARE_DESCRIPTION,
     url: DATA.url,
     siteName: `${DATA.name}`,
     locale: "en_US",
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: DATA.name }],
   },
   robots: {
     index: true,
@@ -42,7 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: `${DATA.name}`,
+    description: SHARE_DESCRIPTION,
     card: "summary_large_image",
+    images: ["/og.png"],
   },
   verification: {
     google: "",

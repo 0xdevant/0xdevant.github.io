@@ -1,12 +1,13 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, SparklesIcon } from "lucide-react";
+// name/url/location/tagline live in JSON so scripts/generate-share-images.mjs
+// can read them too - a plain node script can't import this .tsx module.
+import site from "./site.json";
 
 export const DATA = {
-  name: "Anthony Lau",
+  ...site,
   shortName: "Ant",
   initials: "AL",
-  url: "https://0xdevant.github.io",
-  location: "Hong Kong",
   locationLink: "https://www.google.com/maps/place/hongkong",
   description:
     "Most of the time I'm a smart contract & AI engineer that's obsessed with clean code and security - but sometimes I'm also a founder who loves designing permissionless and sustainable DeFi protocols, and shipping agentic AI infrastructure for SMEs at Clawify. It goes without saying that having ownership over our data, asset and AI agents is a basic human right. So if you ask me, what's better in life than embracing the ideology of Crypto, FOSS and self-hosted AI while making a living from your passion?",
@@ -16,7 +17,7 @@ export const DATA = {
 
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
     // { href: "/showcase", icon: SparklesIcon, label: "Showcase" },
   ],
   contact: {

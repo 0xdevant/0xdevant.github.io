@@ -1,14 +1,14 @@
 {
-  "name": "heilcheng-portfolio",
+  "name": "0xdevant-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://heilcheng.github.io",
+  "homepage": "https://0xdevant.github.io",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:static": "next build",
+    "build": "node scripts/generate-share-images.mjs && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:share-images": "node scripts/generate-share-images.mjs"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.6",

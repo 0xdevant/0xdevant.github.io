@@ -63,9 +63,23 @@ const TableOfContents = dynamic(
 );
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { PublicationCard } from "@/components/publication-card";
+import { ThreadsEmbed } from "@/components/threads-embed";
 import { DATA } from "@/data/resume";
+import {
+  getPublications,
+  PUBLICATION_KIND_LABELS,
+  type PublicationKind,
+} from "@/data/publications";
 
 const BLUR_FADE_DELAY = 0.04;
+
+const PUBLICATION_GROUPS = Object.entries(PUBLICATION_KIND_LABELS)
+  .map(([kind, title]) => ({
+    title,
+    publications: getPublications(kind as PublicationKind),
+  }))
+  .filter((group) => group.publications.length > 0);
 
 export default function Page() {
   return (
@@ -113,55 +127,30 @@ export default function Page() {
             <BlurFade delay={BLUR_FADE_DELAY * 11}>
               <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
                 I&apos;m a HongKonger born and raised in Hong Kong. Before
-                becoming a FT smart contract engineer and being super passionate
-                about crypto and blockchain and all that - I was just a
-                fullstack dev who had no idea what he was doing.
+                becoming a FT smart contract engineer, I was just a fullstack
+                dev who had no idea what he was doing.
               </p>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 12}>
               <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                But then one day late in 2021 my colleague mentioned to me about
-                Polkadot and he kept shilling me because back then it was still
-                in the &ldquo;altcoin season&rdquo; i.e. usually the late phase
-                in a bullmarket - this is probably the first time I heard about
-                a cryptocurrency other than Bitcoin, but at that moment I was
-                still thinking all of those things like blockchain, mining etc
-                are just buzzwords and scam so I didn&apos;t really pay
-                attention and got back to work.
+                That changed late in 2021, when a colleague kept shilling me
+                Polkadot. I never bought the top - I can&apos;t stand buying
+                something I don&apos;t understand - but I did go down the rabbit
+                hole of how Bitcoin and blockchains actually work. DOT
+                eventually dumped and he stopped talking about it; by then
+                I&apos;d found something far more interesting: a technology
+                whose properties - ownership, immutability,
+                censorship-resistance, open-source and privacy - match my core
+                beliefs exactly.
               </p>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 13}>
               <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                Over the next few days I think DOT actually went up and I still
-                didn&apos;t bother to buy because I despises the fact that they
-                are buying something that they have no idea what it is and how
-                it works - but I did spend quite some time trying to learn how
-                the tech works under the hood by watching some YouTube on how
-                Bitcoin works, how blockchain actually works etc. Sooner or
-                later after the pump - of course DOT starts going down and the
-                colleague who was shilling me earlier started to complain - but
-                at that time I was still spending lots of efforts deep-diving
-                into the rabbit hole of crypto and blockchain, and finally I
-                discovered how revolutionary this technology actually is, and
-                how its properties like ownership, immutability,
-                censorship-resistance, open-source and privacy are so matched
-                with my core beliefs.
-              </p>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                And so, here I am, trying to contribute to this meaningful
-                technology hoping to bring some good impact to the world +
-                upholding these core beliefs + designing DeFi & Privacy
-                protocols have become a passion I am going to enjoy for the rest
-                of my life.
-              </p>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 15}>
-              <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                Outside of web3, you&apos;ll find me watching anime, playing
-                basketball, or on a mission to hunt down the best cha chaan teng
-                (茶餐廳) in Hong Kong.
+                So here I am, designing DeFi & Privacy protocols - a passion
+                I&apos;ll happily keep for the rest of my life. Outside of web3,
+                you&apos;ll find me watching anime, playing basketball, or on a
+                mission to hunt down the best cha chaan teng (茶餐廳) in Hong
+                Kong.
               </p>
             </BlurFade>
           </div>
@@ -173,6 +162,45 @@ export default function Page() {
           <EthicsQuote delay={BLUR_FADE_DELAY * 15.5} />
         </div>
       </section> */}
+
+      <section id="publications" className="mb-section-lg">
+        <div className="space-y-content-lg">
+          <BlurFade delay={BLUR_FADE_DELAY * 14}>
+            <div className="space-y-2">
+              <h2 className="text-xl font-bold">Publications</h2>
+              <p className="text-sm text-muted-foreground">
+                Posts I&apos;ve published, and posts out there that mention my
+                work.
+              </p>
+            </div>
+          </BlurFade>
+          <div className="space-y-content-md">
+            {PUBLICATION_GROUPS.map((group, groupId) => (
+              <div key={group.title} className="space-y-content-sm">
+                <BlurFade delay={BLUR_FADE_DELAY * 15 + groupId * 0.1}>
+                  <h3 className="text-sm font-semibold text-muted-foreground">
+                    {group.title}
+                  </h3>
+                </BlurFade>
+                <div className="space-y-3">
+                  {group.publications.map((publication, id) => (
+                    <BlurFade
+                      key={publication.url}
+                      delay={BLUR_FADE_DELAY * 16 + groupId * 0.1 + id * 0.05}
+                    >
+                      {publication.embed === "threads" ? (
+                        <ThreadsEmbed url={publication.url} />
+                      ) : (
+                        <PublicationCard {...publication} />
+                      )}
+                    </BlurFade>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section id="work" className="mb-section-lg">
         <div className="space-y-12">
@@ -204,14 +232,14 @@ export default function Page() {
 
       <section id="education" className="mb-section-lg">
         <div className="space-y-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 19}>
+          <BlurFade delay={BLUR_FADE_DELAY * 22}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           <div className="space-y-0">
             {DATA.education.map((education, id) => (
               <BlurFade
                 key={education.school}
-                delay={BLUR_FADE_DELAY * 20 + id * 0.05}
+                delay={BLUR_FADE_DELAY * 23 + id * 0.05}
               >
                 <TimelineItem
                   logoUrl={education.logoUrl}
@@ -229,12 +257,12 @@ export default function Page() {
       </section>
 
       <section id="tech-stack" className="mb-section-lg">
-        <TechStack delay={BLUR_FADE_DELAY * 21} />
+        <TechStack delay={BLUR_FADE_DELAY * 24} />
       </section>
 
       <section id="projects" className="mb-section-lg">
         <div className="space-y-content-lg">
-          <BlurFade delay={BLUR_FADE_DELAY * 22}>
+          <BlurFade delay={BLUR_FADE_DELAY * 25}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -252,7 +280,7 @@ export default function Page() {
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
-                delay={BLUR_FADE_DELAY * 23 + id * 0.05}
+                delay={BLUR_FADE_DELAY * 26 + id * 0.05}
               >
                 <ProjectCard
                   href={project.href}
@@ -272,12 +300,12 @@ export default function Page() {
       </section>
 
       <section id="github" className="mb-section-lg">
-        <GitHubContributions username="0xdevant" delay={BLUR_FADE_DELAY * 24} />
+        <GitHubContributions username="0xdevant" delay={BLUR_FADE_DELAY * 27} />
       </section>
 
       <section id="books" className="mb-section-lg">
         <div className="space-y-content-lg">
-          <BlurFade delay={BLUR_FADE_DELAY * 25}>
+          <BlurFade delay={BLUR_FADE_DELAY * 28}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -290,11 +318,11 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 26}>
+          <BlurFade delay={BLUR_FADE_DELAY * 29}>
             <div className="space-y-content-lg">
               {DATA.books.map((themeGroup, themeId) => (
                 <div key={themeGroup.theme} className="space-y-content-sm">
-                  <BlurFade delay={BLUR_FADE_DELAY * 27 + themeId * 0.1}>
+                  <BlurFade delay={BLUR_FADE_DELAY * 30 + themeId * 0.1}>
                     <h3 className="text-lg font-semibold text-muted-foreground">
                       {themeGroup.theme}
                     </h3>
@@ -304,7 +332,7 @@ export default function Page() {
                       <BlurFade
                         key={book.title + book.author}
                         delay={
-                          BLUR_FADE_DELAY * 28 + themeId * 0.1 + bookId * 0.05
+                          BLUR_FADE_DELAY * 31 + themeId * 0.1 + bookId * 0.05
                         }
                       >
                         <BookCard
@@ -324,7 +352,7 @@ export default function Page() {
 
       <section id="hong-kong" className="mb-section-lg">
         <div className="space-y-content-lg">
-          <BlurFade delay={BLUR_FADE_DELAY * 29}>
+          <BlurFade delay={BLUR_FADE_DELAY * 32}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -337,13 +365,13 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <HongKongMap delay={BLUR_FADE_DELAY * 30} />
+          <HongKongMap delay={BLUR_FADE_DELAY * 33} />
         </div>
       </section>
 
       <section id="world" className="mb-section-lg">
         <div className="space-y-content-lg">
-          <BlurFade delay={BLUR_FADE_DELAY * 31}>
+          <BlurFade delay={BLUR_FADE_DELAY * 34}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -355,11 +383,11 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <WorldMap delay={BLUR_FADE_DELAY * 32} />
+          <WorldMap delay={BLUR_FADE_DELAY * 35} />
         </div>
       </section>
 
-      <ContactOrbiting delay={BLUR_FADE_DELAY * 33} />
+      <ContactOrbiting delay={BLUR_FADE_DELAY * 36} />
     </main>
   );
 }

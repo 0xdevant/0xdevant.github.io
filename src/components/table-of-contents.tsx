@@ -10,6 +10,7 @@ const SECTIONS = [
   { id: "hero", label: "Home" },
   // { id: "rubiks-cube", label: "Rubik's Cube" },
   { id: "about", label: "My Story" },
+  { id: "publications", label: "Publications" },
   { id: "work", label: "Work" },
   { id: "education", label: "Education" },
   // { id: "tech-stack", label: "Tech Stack" },

@@ -1,6 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { getBlogPosts } from "@/data/blog";
-import { getMediumPosts } from "@/data/medium-posts";
+import { getPublications } from "@/data/publications";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { ExternalLink, Search, Filter } from "lucide-react";
@@ -17,7 +17,7 @@ const CATEGORIES = {
   all: "All Posts",
   "website-development": "Website Development",
   "life-thoughts": "Life & Thoughts",
-  "medium-articles": "Medium Articles",
+  "external-articles": "External Articles",
 };
 
 // Function to categorize posts
@@ -25,9 +25,9 @@ function categorizePost(post: any) {
   const tags = post.tags || [];
   const title = post.title.toLowerCase();
 
-  // Check for Medium posts first
-  if (post.type === "medium") {
-    return "medium-articles";
+  // Check for externally published posts first
+  if (post.type === "external") {
+    return "external-articles";
   }
 
   // Check for website development related posts
@@ -61,7 +61,7 @@ function categorizePost(post: any) {
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();
-  const mediumPosts = getMediumPosts();
+  const externalPosts = getPublications("authored");
 
   // Combine and categorize all posts
   const allPosts = [
@@ -69,18 +69,12 @@ export default async function BlogPage() {
       ...post,
       type: "local" as const,
       url: `/blog/${post.slug}`,
-      isExternal: false,
       publishedAt: post.metadata.publishedAt,
       title: post.metadata.title,
       summary: post.metadata.summary,
       tags: post.metadata.tags,
     })),
-    ...mediumPosts.map((post) => ({
-      ...post,
-      type: "medium" as const,
-      url: post.url,
-      isExternal: true,
-    })),
+    ...externalPosts.map((post) => ({ ...post, type: "external" as const })),
   ];
 
   // Add category to each post
@@ -152,8 +146,10 @@ export default async function BlogPage() {
               <Link
                 className="group block"
                 href={post.url}
-                target={post.isExternal ? "_blank" : undefined}
-                rel={post.isExternal ? "noopener noreferrer" : undefined}
+                target={post.type === "external" ? "_blank" : undefined}
+                rel={
+                  post.type === "external" ? "noopener noreferrer" : undefined
+                }
                 data-category={post.category}
                 data-title={post.title.toLowerCase()}
                 data-summary={post.summary.toLowerCase()}
@@ -166,7 +162,7 @@ export default async function BlogPage() {
                         <h3 className="text-xl font-medium tracking-tight group-hover:text-foreground transition-colors duration-200 flex-1 leading-relaxed">
                           {post.title}
                         </h3>
-                        {post.isExternal && (
+                        {post.type === "external" && (
                           <ExternalLink className="size-4 text-muted-foreground mt-1 ml-3 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                         )}
                       </div>
@@ -189,9 +185,9 @@ export default async function BlogPage() {
                               {tag}
                             </span>
                           ))}
-                        {post.isExternal && (
+                        {post.type === "external" && (
                           <span className="text-xs px-3 py-1 rounded-full bg-muted/50 text-muted-foreground font-medium">
-                            Medium
+                            {post.outlet}
                           </span>
                         )}
                       </div>
