@@ -186,6 +186,24 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "搵食 Tinder",
+      href: "https://eat-what-hk.vercel.app/",
+      dates: "2026 Jul",
+      active: true,
+      description:
+        "A Tinder-style restaurant picker for Hong Kong - swipe through 2,000 top-rated restaurants and let the cards decide where to eat tonight. Filter by district and cuisine to narrow things down, with everything preloaded so there's nothing to enter yourself. Built because my girlfriend could never decide where to eat.",
+      technologies: ["React", "TypeScript", "Vite", "Vercel"],
+      links: [
+        {
+          type: "Website",
+          href: "https://eat-what-hk.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
+    {
       title: "Clawify",
       href: "https://clawify.dev/",
       dates: "2026 - Present",

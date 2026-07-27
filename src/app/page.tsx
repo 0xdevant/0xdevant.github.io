@@ -64,7 +64,6 @@ const TableOfContents = dynamic(
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { PublicationCard } from "@/components/publication-card";
-import { ThreadsEmbed } from "@/components/threads-embed";
 import { DATA } from "@/data/resume";
 import {
   getPublications,
@@ -188,11 +187,7 @@ export default function Page() {
                       key={publication.url}
                       delay={BLUR_FADE_DELAY * 16 + groupId * 0.1 + id * 0.05}
                     >
-                      {publication.embed === "threads" ? (
-                        <ThreadsEmbed url={publication.url} />
-                      ) : (
-                        <PublicationCard {...publication} />
-                      )}
+                      <PublicationCard {...publication} />
                     </BlurFade>
                   ))}
                 </div>
