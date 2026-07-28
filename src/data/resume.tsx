@@ -77,7 +77,7 @@ export const DATA = {
       title: "Staff Smart Contract Engineer",
       logoUrl: "/logo_long.svg",
       start: "Apr 2025",
-      end: "Now",
+      end: "Aug 2026",
       bullets: [
         "Study and integrate with Uniswap's Liquidity Launcher and Continuous Clearing Auctions, the latest standard for bootstrapping liquidity",
         "Develop liquidity bootstrapping strategy contract on top of LiquidityLauncher to customize liquidity migration to Uniswap v4 pool by minting single-sided positions and swapping remaining Currency via Uniswap v3 maths + v4 PositionManager + UniversalRouter",
