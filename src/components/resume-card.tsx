@@ -9,6 +9,16 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+/** A bullet is either a plain line or a line introducing an indented sub-list. */
+export type Bullet =
+  | string
+  | { readonly text: string; readonly sub: readonly string[] };
+
+const bulletText = (bullet: Bullet) =>
+  typeof bullet === "string" ? bullet : bullet.text;
+const bulletSub = (bullet: Bullet) =>
+  typeof bullet === "string" ? undefined : bullet.sub;
+
 interface ResumeCardProps {
   logoUrl: string;
   altText: string;
@@ -18,11 +28,11 @@ interface ResumeCardProps {
   badges?: readonly string[];
   period: string;
   description?: string;
-  bullets?: readonly string[];
+  bullets?: readonly Bullet[];
 }
 
 interface TimelineItemProps {
-  logoUrl: string;
+  logoUrl?: string;
   altText: string;
   title: string;
   subtitle?: string;
@@ -30,7 +40,7 @@ interface TimelineItemProps {
   badges?: readonly string[];
   period: string;
   description?: string;
-  bullets?: readonly string[];
+  bullets?: readonly Bullet[];
   isLast?: boolean;
 }
 
@@ -65,7 +75,9 @@ export const TimelineItem = ({
       {/* Timeline dot with logo */}
       <div className="absolute left-0 top-0 w-8 h-8 sm:w-12 sm:h-12 rounded-full border-2 border-background shadow-lg bg-background flex items-center justify-center">
         <Avatar className="size-6 sm:size-10 border">
-          <AvatarImage src={logoUrl} alt={altText} className="object-contain" />
+          {logoUrl && (
+            <AvatarImage src={logoUrl} alt={altText} className="object-contain" />
+          )}
           <AvatarFallback className="text-xs">{altText[0]}</AvatarFallback>
         </Avatar>
       </div>
@@ -128,12 +140,34 @@ export const TimelineItem = ({
               <div className="pt-3 border-t border-border/30">
                 {bullets ? (
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    {bullets.map((bullet, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="size-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                        <span className="leading-relaxed">{bullet}</span>
-                      </li>
-                    ))}
+                    {bullets.map((bullet, index) => {
+                      const sub = bulletSub(bullet);
+                      return (
+                        <li key={index} className="space-y-2">
+                          <div className="flex items-start gap-2">
+                            <span className="size-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                            <span className="leading-relaxed">
+                              {bulletText(bullet)}
+                            </span>
+                          </div>
+                          {sub && (
+                            <ul className="space-y-2 pl-5 sm:pl-6">
+                              {sub.map((item, subIndex) => (
+                                <li
+                                  key={subIndex}
+                                  className="flex items-start gap-2"
+                                >
+                                  <span className="size-1.5 rounded-full border border-muted-foreground mt-2 flex-shrink-0" />
+                                  <span className="leading-relaxed">
+                                    {item}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 ) : (
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -246,9 +280,21 @@ export const ResumeCard = ({
             >
               {bullets ? (
                 <ul className="list-disc list-inside space-y-1">
-                  {bullets.map((bullet, index) => (
-                    <li key={index}>{bullet}</li>
-                  ))}
+                  {bullets.map((bullet, index) => {
+                    const sub = bulletSub(bullet);
+                    return (
+                      <li key={index}>
+                        {bulletText(bullet)}
+                        {sub && (
+                          <ul className="list-[circle] list-inside space-y-1 pl-4 mt-1">
+                            {sub.map((item, subIndex) => (
+                              <li key={subIndex}>{item}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : (
                 description
