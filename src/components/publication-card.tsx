@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { ThreadsEmbed } from "@/components/threads-embed";
+import { SocialEmbed } from "@/components/social-embed";
 import { formatDate } from "@/lib/utils";
 import type { Publication } from "@/data/publications";
 
@@ -18,9 +19,19 @@ export function PublicationCard({
   summary,
   tags,
   embed,
+  image,
 }: Props) {
   const content = (
     <div className="space-y-3">
+      {image && (
+        <Image
+          src={image}
+          alt={title}
+          width={800}
+          height={420}
+          className="h-40 w-full rounded-xl object-cover object-top"
+        />
+      )}
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-base sm:text-lg font-medium tracking-tight leading-snug flex-1">
           {title}
@@ -48,7 +59,13 @@ export function PublicationCard({
           ))}
         </div>
       </div>
-      {embed === "threads" && <ThreadsEmbed url={url} />}
+      {embed && (
+        // Instagram's embed sets min-width:326px, wider than the card's inner
+        // width on a phone - let it scroll here rather than the whole page.
+        <div className="overflow-x-auto">
+          <SocialEmbed provider={embed} url={url} />
+        </div>
+      )}
     </div>
   );
 
