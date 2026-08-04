@@ -41,6 +41,7 @@ interface TimelineItemProps {
   period: string;
   description?: string;
   bullets?: readonly Bullet[];
+  note?: string;
   isLast?: boolean;
 }
 
@@ -54,6 +55,7 @@ export const TimelineItem = ({
   period,
   description,
   bullets,
+  note,
   isLast = false,
 }: TimelineItemProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -94,6 +96,11 @@ export const TimelineItem = ({
               {subtitle && (
                 <p className="text-muted-foreground text-sm mt-1 leading-relaxed whitespace-pre-line">
                   {subtitle}
+                </p>
+              )}
+              {note && (
+                <p className="text-muted-foreground text-xs mt-1 italic leading-relaxed">
+                  {note}
                 </p>
               )}
               {/* Badges moved below title on mobile */}

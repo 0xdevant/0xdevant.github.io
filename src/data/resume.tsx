@@ -86,6 +86,7 @@ export const DATA = {
         "Actively contribute to the Doppler repo and work with ex-Uniswap team",
         "Build simulation framework to test different price dynamic with customized params on Doppler’s bonding curve and Uniswap’s Liquidity Launcher via Foundry and Tenderly",
       ],
+      note: "Laid off after the company ran out of funding",
     },
     {
       company: "Uniswap Foundation",
@@ -156,6 +157,7 @@ export const DATA = {
         "Construct both backend and frontend integrations with Ethereum where necessary",
         "Conduct market making (MM) for cryptos via Hummingbot",
       ],
+      note: "Left after the FTX collapse hit the company",
     },
     {
       company: "METABRGE",
@@ -171,6 +173,7 @@ export const DATA = {
         "Develop one-stop launchpad smart contract suite for Fashion Brands' integration w/ Metaverse",
         "Decision making on software architecture & design",
       ],
+      note: "Subsidiary of SOUL",
     },
     {
       company: "SOUL",

@@ -217,6 +217,7 @@ export default function Page() {
                   badges={work.badges}
                   period={`${work.start} - ${work.end ?? "Present"}`}
                   bullets={work.bullets}
+                  note={"note" in work ? work.note : undefined}
                   isLast={id === DATA.technicalExperience.length - 1}
                 />
               </BlurFade>
