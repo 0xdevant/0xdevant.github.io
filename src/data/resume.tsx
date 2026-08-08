@@ -21,7 +21,7 @@ export const DATA = {
     // { href: "/showcase", icon: SparklesIcon, label: "Showcase" },
   ],
   contact: {
-    email: "anty1025@proton.me",
+    email: "0xdevant@gmail.com",
     tel: "+852-XXX-XXX-XXX",
     social: {
       GitHub: {
@@ -44,7 +44,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto:anty1025@proton.me",
+        url: "mailto:0xdevant@gmail.com",
         icon: Icons.email,
         navbar: false,
       },
