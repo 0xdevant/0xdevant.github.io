@@ -33,6 +33,7 @@
 
 /* Plain links are underlined; row links and names underline on hover instead. */
 .stripLinks a,
+.sectionNav a,
 .leadLinks a,
 .social a,
 .page .email {
@@ -167,7 +168,6 @@
   align-items: center;
   justify-content: center;
   height: 44px;
-  text-decoration: none;
 }
 
 .sectionNav a + a {
@@ -739,6 +739,7 @@
 /* Hover only where a pointer can hover, so taps never leave a stuck state. */
 @media (hover: hover) {
   .stripLinks a:hover,
+  .sectionNav a:hover,
   .leadLinks a:hover,
   .social a:hover,
   .page .email:hover {
@@ -746,7 +747,6 @@
   }
 
   .page .co:hover,
-  .page .sectionNav a:hover,
   .earlierRow:hover .earlierCompany,
   .project:hover h3,
   .clipping:hover .clippingTitle {
