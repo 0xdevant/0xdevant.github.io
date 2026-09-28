@@ -90,10 +90,10 @@ export const RECENT_WORK: Role[] = [
     figure: {
       src: "/front-page/clawify.jpg",
       width: 1100,
-      height: 632,
-      alt: "The Clawify homepage: A 24/7 assistant that lives in your Discord",
+      height: 780,
+      alt: "The Clawify homepage: A 24/7 assistant that lives in your Slack, beside a demo chat where the assistant drafts a week of social posts",
       caption:
-        "Clawify's homepage. Launch agents powered by GPT, Claude or Gemini on your own server; pay once, own your data.",
+        "Clawify's homepage. A 24/7 AI assistant in the chat app you already use, free forever if you host it yourself.",
       credit: "Screenshot: clawify.dev",
       href: "https://clawify.dev/",
     },
