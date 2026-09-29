@@ -209,13 +209,6 @@ export const LEAD_PROJECT = {
 
 export const PROJECTS = [
   {
-    title: "Doppler v4 hooks",
-    href: "https://github.com/0xdevant/doppler-v4-hooks",
-    year: "2026",
-    description:
-      "Uniswap v4 hooks on Doppler that unlock SSL at FDV milestones and take a dynamic fee on the numeraire token.",
-  },
-  {
     title: "autoMate",
     href: "https://github.com/0xdevant/autoMate-contracts",
     year: "2024",
