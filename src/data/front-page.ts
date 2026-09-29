@@ -115,9 +115,10 @@ export const RECENT_WORK: Role[] = [
     title: "Staff Smart Contract Engineer",
     dates: "MAR 2025 - JUL 2026",
     bullets: [
-      "Liquidity bootstrapping contracts on Uniswap's Liquidity Launcher and Continuous Clearing Auctions.",
-      "Hooks and extensions on Doppler: FDV-milestone unlocks, dynamic fees, and migration to Uniswap v3 with live LP fee streaming.",
-      "A simulation framework for bonding curve price dynamics, with Foundry and Tenderly.",
+      "Led end-to-end smart contract development for Long's token launch platform: 20+ tokens launched with $1M FDV.",
+      "Built a liquidity bootstrapping strategy on Uniswap's Liquidity Launcher and Continuous Clearing Auctions, migrating liquidity into Uniswap v4 pools with single-sided positions.",
+      "Built Doppler hooks and extensions that unlock single-sided liquidity at FDV milestones, take a dynamic fee on the numeraire token in either swap direction, and migrate bonding curve liquidity to Uniswap v3 with real-time LP fee streaming.",
+      "Built a simulation framework to tune price dynamics on Doppler's bonding curve and the Liquidity Launcher via Foundry and Tenderly.",
     ],
     figure: {
       src: "/front-page/long.jpg",
