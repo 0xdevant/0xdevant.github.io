@@ -137,7 +137,7 @@
   margin: 0;
   padding: 16px 0 10px;
   text-align: center;
-  font-size: clamp(56px, 14.4vw, 208px);
+  font-size: clamp(44px, 14.4vw, 208px);
   line-height: 1;
   font-weight: 600;
   letter-spacing: -0.035em;
@@ -387,7 +387,7 @@
 
 .company {
   margin: 0;
-  font-size: 40px;
+  font-size: clamp(32px, 10.6vw, 40px);
   line-height: 1;
   font-weight: 600;
   letter-spacing: -0.025em;
