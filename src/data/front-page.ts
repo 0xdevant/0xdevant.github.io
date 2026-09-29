@@ -27,8 +27,17 @@ export const MARKETS = {
 export const IN_BRIEF = [
   {
     term: "Trained",
-    detail:
-      "Uniswap Hook Incubator, 1st cohort; Assembly & Formal Verification, Cyfrin Updraft",
+    detail: [
+      "Uniswap Hook Incubator, 1st cohort",
+      "Cyfrin Updraft: Assembly & Formal Verification",
+    ],
+  },
+  {
+    term: "Certified",
+    detail: [
+      "Anthropic: Claude API, Agent Skills, AI Fluency",
+      "Google: Gemini Certified Educator",
+    ],
   },
   { term: "Studied", detail: "BSc Computing & Information Systems, HKBU" },
   { term: "Before", detail: "Long; Uniswap Foundation; 9GAG/Memeland" },

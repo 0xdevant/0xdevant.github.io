@@ -127,7 +127,9 @@ export default function Page() {
               {IN_BRIEF.map((item) => (
                 <div key={item.term}>
                   <dt>{item.term}</dt>
-                  <dd>{item.detail}</dd>
+                  {[item.detail].flat().map((line) => (
+                    <dd key={line}>{line}</dd>
+                  ))}
                 </div>
               ))}
             </dl>

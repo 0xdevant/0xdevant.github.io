@@ -304,6 +304,11 @@
   margin: 0;
 }
 
+/* Extra room so a second item doesn't read as a wrapped line of the first. */
+.briefList dd + dd {
+  margin-top: 4px;
+}
+
 /* Figures */
 
 .figure {
