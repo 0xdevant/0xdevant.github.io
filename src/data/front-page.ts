@@ -90,11 +90,13 @@ export const RECENT_WORK: Role[] = [
     title: "Founder & AI Engineer",
     dates: "MAR 2026 - NOW",
     bullets: [
-      "A multi-layered engine on a local LLM, driving an MNC's company-wide AI transformation: data analytics, multi-agent orchestration, RAG over company knowledge with citations, and human-in-the-loop governance.",
-      "One-click agent-to-VPS deployment for SMEs, built on OpenClaw and Hermes.",
-      "Agentic workflows for SEO analysis, tax audits under Hong Kong IRD rules, and social media content.",
-      "The agent runtime underneath: prompt engineering, a RAG pipeline, and tool calling into messaging apps.",
-      "Product launch and promo videos, written from scratch in HTML and rendered with HyperFrames.",
+      "Built a multi-layered AI engine on a local LLM for a multinational: data analytics, multi-agent orchestration, RAG over company knowledge with citations, and human-in-the-loop governance, powering its company-wide AI transformation.",
+      "Grew organic traffic by posting on Threads (500K views in 30 days), which brought in multiple clients.",
+      "Made polished product launch and promo videos from scratch, written in HTML and rendered with HyperFrames.",
+      "Advised several SMEs and designed custom agent workflows for them.",
+      "Built an agentic SEO analysis workflow for an international desiccant supplier to cut their SEM (paid search) spend.",
+      "Built a tax audit RAG agent on WhatsApp that reads receipts, sorts what's deductible under Hong Kong IRD rules and writes compliant audit reports, packaged as a reusable agent skill.",
+      "Made deploying OpenClaw and Hermes agents easy, secure and optimized.",
     ],
     figure: {
       src: "/front-page/clawify.jpg",
