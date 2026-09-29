@@ -177,8 +177,9 @@
 
 .markets {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  row-gap: 10px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px 12px;
   padding: 14px 0;
   border-bottom: 3px solid var(--ink);
 }
@@ -193,17 +194,9 @@
   font-weight: 500;
 }
 
+/* Phone: one row per figure, note beside the value, so notes don't wrap in narrow cells. */
 .market {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 0 8px;
-  border-left: 1px solid var(--ink);
-}
-
-.marketsLabel + .market {
-  padding-left: 0;
-  border-left: 0;
+  display: contents;
 }
 
 .marketValue {
@@ -778,6 +771,25 @@
 
   .profile {
     grid-column: 1 / -1;
+  }
+
+  .markets {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    column-gap: 0;
+  }
+
+  .market {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 8px;
+    border-left: 1px solid var(--ink);
+  }
+
+  .marketsLabel + .market {
+    padding-left: 0;
+    border-left: 0;
   }
 
   .role {
