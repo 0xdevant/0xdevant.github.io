@@ -97,9 +97,9 @@ export const DATA = {
       start: "Oct 2024",
       end: "Mar 2025",
       bullets: [
-        "Onboard developers into the Uniswap ecosystem, providing them technical assistance related to Uniswap v4, Unichain, Uniswap SDK, Uniswap frontend etc",
+        "Onboarded developers to Uniswap v4, Unichain and the Uniswap SDK",
         "Core contributor to Uniswap v4 docs",
-        "Judges for ETHTaipei Hackathon submissions to UF",
+        "Judged ETHTaipei hackathon submissions to the Uniswap Foundation",
       ],
     },
     {
