@@ -130,9 +130,9 @@ export const DATA = {
             "SPL Token Presale contract on Solana with Rust and Anchor",
           ],
         },
-        "Lead a team of 2 blockchain engineers by assigning tasks based on their strengths, and make technical decisions on overall smart contract architecture",
-        "Introduce fuzz, invariant testing & formal verification to smart contract security practice",
-        "Provide smart contract audit including an audit report for renowned NFT projects e.g. Nobody and CASETiFY",
+        "Led a team of 2 blockchain engineers, assigning work to their strengths and owning the smart contract architecture",
+        "Introduced fuzz testing, invariant testing and formal verification to the team's security practice",
+        "Audited smart contracts and wrote audit reports for well-known NFT projects such as Nobody and CASETiFY",
       ],
     },
     {
@@ -148,13 +148,13 @@ export const DATA = {
         {
           text: "Develop smart contracts on ETH & Polkadot for:",
           sub: [
-            "DEX similar to Balancer + native liquid staking of $DOT on parachain of Polkadot (securing >1M USD in TVL)",
+            "A Balancer-style DEX with native $DOT liquid staking on a Polkadot parachain, securing over $1M in TVL",
             "NFT Projects (with ERC2981 Royalty Standard)",
             "Cross-chain NFTFi (w/ Axelar bridge messaging)",
           ],
         },
         "Construct both backend and frontend integrations with Ethereum where necessary",
-        "Conduct market making (MM) for cryptos via Hummingbot",
+        "Ran crypto market making with Hummingbot",
       ],
       note: "Left after the FTX collapse hit the company",
     },
@@ -170,8 +170,8 @@ export const DATA = {
       bullets: [
         "Lead on system design, task allocation and project management while supervising whole tech team",
         "Develop one-stop launchpad smart contract suite for Fashion Brands' integration w/ Metaverse",
-        "Decision making on system architecture (AWS Route 53 + ECS + ALB + Lambda + Dynamo DB w/ IAM + Disaster Recovery)",
-        "Web Development: NFT Dapps, SOUL's Shopify website whole revamp",
+        "Owned the AWS architecture: Route 53, ECS, ALB, Lambda, DynamoDB, IAM and disaster recovery",
+        "Built NFT dapps and led a full revamp of SOUL's Shopify site",
       ],
     },
     {
@@ -184,7 +184,7 @@ export const DATA = {
       start: "Jun 2018",
       end: "Sep 2019",
       bullets: [
-        "Full-stack web application development — lead architectural decisions, testing, code review & deployment",
+        "Built full-stack web apps, leading architecture, testing, code review and deployment",
         "Build RESTful API services and relational databases on LAMP stack",
       ],
     },
